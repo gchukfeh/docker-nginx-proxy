@@ -21,8 +21,8 @@ integrations:
     # AWS Integration to deploy Docker image
     - integrationName: "aws-eb-integration"
       type: aws
-      application_name: "wafdemo"
-      env_name: "wafdemo-stg"
+      application_name: "naxsi-docker"
+      env_name: "Sample-env"
       region: "us-east-1"
       image_name: "gchuk5/docker-nginx-proxy"
       image_tag: "$BRANCH.$BUILD_NUMBER"
