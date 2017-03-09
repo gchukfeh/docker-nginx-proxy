@@ -22,7 +22,7 @@ integrations:
     - integrationName: "aws-eb-integration"
       type: aws
       application_name: "wafdemo"
-      env_name: "wafdemo-dev"
+      env_name: "wafdemo-stg"
       region: "us-east-1"
       image_name: "gchuk5/docker-nginx-proxy"
       image_tag: "$BRANCH.$BUILD_NUMBER"
