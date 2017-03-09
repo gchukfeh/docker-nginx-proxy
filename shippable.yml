@@ -1,0 +1,30 @@
+# Language settings
+
+build:
+  ci:
+      - sudo apt-get update
+      - sudo apt-get -y install python-dev
+      - sudo pip install setuptools==34.0.1
+      # Addresses botocore version mismatch errors
+      - sudo pip install --upgrade botocore
+      - sudo pip install awsebcli
+
+  post_ci:
+      # DockerHub
+      - docker build -t="gchuk5/docker-nginx-proxy:$BRANCH.$BUILD_NUMBER" .
+      - docker push gchuk5/docker-nginx-proxy:$BRANCH.$BUILD_NUMBER
+
+integrations:
+  deploy:
+    # AWS Integration to deploy Docker image
+    - integrationName: "aws-eb-integration"
+      type: aws
+      application_name: "wafdemo"
+      env_name: "wafdemo-dev"
+      region: "us-east-1"
+      image_name: "gchuk5/docker-nginx-proxy"
+      image_tag: "$BRANCH.$BUILD_NUMBER"
+
+  hub:
+    - integrationName: "gchuk5-docker-hub-integration"
+      type: docker
