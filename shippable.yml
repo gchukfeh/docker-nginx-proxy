@@ -1,5 +1,7 @@
 # Language settings
-
+env:
+  - PROXY_SERVICE_HOST=stackexchange.com
+  
 build:
   ci:
       - sudo apt-get update
