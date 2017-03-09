@@ -1,4 +1,4 @@
-# Language settings
+# Language settingss
 env:
   - PROXY_SERVICE_HOST=stackexchange.com
   
